@@ -79,3 +79,9 @@
             right: 10px;
             font-size: 2vw;
         }
+
+        footer {
+            margin-top: 40px;
+            color: #999;
+            font-size: 0.9rem;
+        }

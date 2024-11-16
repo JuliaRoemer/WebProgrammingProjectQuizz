@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fdf5e6;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #0B6121;
+}
+
+.movie-selection {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.movie-button {
+    background-color: #0B6121;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.movie-button:hover {
+    background-color: #0B6121;
+    transform: scale(1.1);
+}
+
+.artwork {
+    margin: 20px auto;
+    max-width: 300px;
+}
+
+footer {
+    margin-top: 40px;
+    color: #999;
+    font-size: 0.9rem;
+}
