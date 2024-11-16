@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fdf5e6;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #2f6d3e;
+        }
+
+        .movie-selection {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .movie-button {
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .movie-button:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+
+        .artwork {
+            margin: 20px auto;
+            max-width: 300px;
+        }
+
+        footer {
+            margin-top: 40px;
+            color: #999;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img class="artwork" src="./Images/LogoRound.png" alt="Quiz Artwork Placeholder">
+        <h1>Choose Your Movie Quiz</h1>
+    </header>
+    <div class="movie-selection">
+        <button class="movie-button" onclick="location.href='quiz-lion-king.html'">The Lion King</button>
+        <button class="movie-button" onclick="location.href='quiz-aladdin.html'">Aladdin</button>
+        <button class="movie-button" onclick="location.href='quiz-frozen.html'">Frozen</button>
+        <button class="movie-button" onclick="location.href='quiz-beauty-beast.html'">Beauty and the Beast</button>
+        <button class="movie-button" onclick="location.href='quiz-tangled.html'">Tangled</button>
+    </div>
+    <footer>
+        <p>Quizzard of Oz © 2024</p>
+    </footer>
+</body>
+</html>
