@@ -279,11 +279,51 @@ const movieQuestions = [
 const questions = movieQuestions.map(movie => movie.questions).flat()
 console.log(questions)
 
-// Function: select random questions
-function selectRandomQuestions(numberOfQuestions, questionsArray) {
-  const selectedQuestions = [];
-  const copyQuestions = [...questionsArray]; // Create a copy of the array
+// Get the number of questions from the URL
+let numQuestions = getQueryParam('questions');
+const movieParam = getQueryParam('movie')
+console.log(movieParam)
+let movie =""
+switch (movieParam) {
+  case 'the-lion-king': movie = "The Lion King"; break;
+  case 'aladdin': movie = "Aladdin"; break; 
+  case 'frozen': movie = "Frozen"; break; 
+  case 'beauty-beast': movie = "Beauty and the Beast"; break; 
+  case 'tangled': movie = "Tangled"; break; 
+  default: movie="";
+}
+console.log(movie)
 
+
+// Display the selected number of questions or default to 10 if not set
+if (numQuestions) {
+  numQuestions = Number(numQuestions)
+  console.log(`Number of questions selected: ${numQuestions}`);
+  // Use `numQuestions` to load the appropriate number of questions
+} else {
+  console.log("No parameter found, defaulting to 10 questions.");
+  numQuestions = 10
+}
+console.log(numQuestions);
+const selectedQuestions = selectRandomQuestions(numQuestions + 1);
+console.log(selectedQuestions); // Display selected questions in the console
+// });
+
+// Function: select random questions
+function selectRandomQuestions(numberOfQuestions) {
+  const selectedQuestions = [];
+  let copyQuestions = []
+  if (!movie){
+    copyQuestions = [...questions]; // Create a copy of the array
+  } else {
+    console.log(movie)
+    movieQuestions.forEach(obj => {
+      console.log(obj)
+      console.log("movie", obj.movie)
+      if(obj.movie === movie) copyQuestions =  obj.questions
+    })
+  }
+  console.log(copyQuestions)
   for (let i = 0; i < numberOfQuestions; i++) {
     const randomIndex = Math.floor(Math.random() * copyQuestions.length);
     selectedQuestions.push(copyQuestions[randomIndex]);
@@ -298,23 +338,11 @@ function getQueryParam(param) {
   return urlParams.get(param);
 }
 
-// Get the number of questions from the URL
-const numQuestions = Number(getQueryParam('questions'));
 
-// Display the selected number of questions or default to 10 if not set
-if (numQuestions) {
-  console.log(`Number of questions selected: ${numQuestions}`);
-  // Use `numQuestions` to load the appropriate number of questions
-} else {
-  console.log("No parameter found, defaulting to 10 questions.");
-}
-console.log(numQuestions)
-const selectedQuestions = selectRandomQuestions(numQuestions + 1, questions);
-console.log(selectedQuestions); // Display selected questions in the console
-// });
 
 //function: display questions and generate and display buttons with answers
 let currentQuestion = 0;
+let correctQuestions = 0;
 const questionEl = document.getElementById("question");
 const answersEl = document.getElementById("answers");
 
@@ -335,6 +363,8 @@ function showQuestion(index) {
 function handleAnswer(selected, correct, button) {
   if (selected === correct) {
     button.classList.add("correct");
+    correctQuestions++;
+    console.log("# correct questions: ", correctQuestions)
   } else {
     button.classList.add("wrong");
   }
@@ -345,7 +375,7 @@ function handleAnswer(selected, correct, button) {
     showQuestion(currentQuestion);
   }, 1000);
   if (currentQuestion === numQuestions -1) {
-    window.location.href = "closingPage.html"
+    window.location.href = `closingPage.html?correct=${correctQuestions}`
   }
 }
 
